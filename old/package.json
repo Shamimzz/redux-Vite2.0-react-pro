@@ -1,0 +1,23 @@
+{
+  "name": "redux-xplore",
+  "version": "1.0.0",
+  "description": "This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Shamimzz/redux-xplore.git"
+  },
+  "author": "",
+  "type": "module",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Shamimzz/redux-xplore/issues"
+  },
+  "homepage": "https://github.com/Shamimzz/redux-xplore#readme",
+  "dependencies": {
+    "@reduxjs/toolkit": "^1.8.1"
+  }
+}
