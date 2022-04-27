@@ -1,3 +1,6 @@
+import { createAsyncThunk } from '@reduxjs/toolkit';
+import axios from 'axios';
+
 const initial = {
     taskInput: 'demo text',
     task: [
@@ -13,11 +16,32 @@ const initial = {
             id: 3, 
             title: 'third task'
         }
-    ]
+    ],
+    loading: false
   };
+
+
+
+// First, create the thunk
+export const fetchAllTask = createAsyncThunk(
+  'task/fetchAllTask',
+  async () => {
+    const res = await axios.get('https://jsonplaceholder.typicode.com/todos');
+    console.log(res);
+    return res.data
+  }
+)
+
+
+
 
 function TaskReducer(state = initial, action) {
     switch (action.type) {
+      case 'tasks/fetchAllTask/pending':
+        return { 
+            ...state,
+            loading: true
+          }
       case 'CHANGE_TASK':
         return { 
             ...state,

@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { fetchAllTask } from "../store/TaskReducer";
 
 const Tasklist = () => {
   const dispatch = useDispatch();
-  const { task, taskInput } = useSelector((state) => state.task);
+  const { task, taskInput, loading } = useSelector((state) => state.task);
 
   //Get task from input feild.
   const onChangeInput = (value) => {
@@ -19,6 +20,12 @@ const Tasklist = () => {
     dispatch({ type: "CREATE_TASK", payload: task });
     onChangeInput("");
   };
+
+  useEffect(() => {
+    dispatch(fetchAllTask());
+  }, []);
+
+  console.log("Loading", loading);
 
   return (
     <div>
