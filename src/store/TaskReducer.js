@@ -1,6 +1,6 @@
 const initial = {
-    taskInput: '',
-    tasks: [
+    taskInput: 'demo text',
+    task: [
         {
             id: 1, 
             title: 'First task'
@@ -27,7 +27,7 @@ function TaskReducer(state = initial, action) {
       case 'CREATE_TASK':
         return { 
             ...state,
-            task: [ ...state.tasks, action.payload]
+            task: [ action.payload, ...state.task],
           }
   
       default:
