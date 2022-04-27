@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchAllTask } from "../store/TaskReducer";
+import { CreateNewTask, fetchAllTask } from "../store/TaskReducer";
 
 const Tasklist = () => {
   const dispatch = useDispatch();
@@ -13,11 +13,14 @@ const Tasklist = () => {
 
   // Save task by save button.
   const onSave = () => {
-    const task = {
-      id: new Date().getUTCMilliseconds(),
-      title: taskInput,
-    };
-    dispatch({ type: "CREATE_TASK", payload: task });
+    // const task = {
+    //   id: new Date().getUTCMilliseconds(),
+    //   title: taskInput,
+    // };
+    // dispatch({ type: "CREATE_TASK", payload: task });
+    // onChangeInput("");
+
+    dispatch(CreateNewTask(taskInput));
     onChangeInput("");
   };
 
@@ -38,11 +41,15 @@ const Tasklist = () => {
 
       <button onClick={() => onSave()}>Save</button>
 
-      <ul>
-        {task.map((task, index) => (
-          <li key={index}> {task.title} </li>
-        ))}
-      </ul>
+      {loading ? (
+        <h1>Loading plz w8.........</h1>
+      ) : (
+        <ul>
+          {task.map((task, index) => (
+            <li key={index}> {task.title} </li>
+          ))}
+        </ul>
+      )}
     </div>
   );
 };

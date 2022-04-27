@@ -4,8 +4,11 @@ const initial = {
 
 function counterReducer(state = initial, action) {
     switch (action.type) {
-      case 'tasks/fetchAllTask/pending': 
+      case 'task/fetchAllTask/pending': 
         return {...state, loading: true  }
+  
+      case 'task/fetchAllTask/fulfilled': 
+        return {...state, loading: false }
   
       case 'INCREMENT_ONE': 
         return {...state, value: state.value + 1 }

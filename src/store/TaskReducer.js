@@ -21,7 +21,6 @@ const initial = {
   };
 
 
-
 // First, create the thunk
 export const fetchAllTask = createAsyncThunk(
   'task/fetchAllTask',
@@ -32,16 +31,43 @@ export const fetchAllTask = createAsyncThunk(
   }
 )
 
-
+export const CreateNewTask = createAsyncThunk(
+  'task/CreateNewTask',
+  async (taskInput) => {
+    const res = await axios.post('https://jsonplaceholder.typicode.com/todos', {
+      title : taskInput,
+      useId: 1,
+    });
+    console.log(res.data);
+    return res.data
+  }
+)
 
 
 function TaskReducer(state = initial, action) {
     switch (action.type) {
-      case 'tasks/fetchAllTask/pending':
+      // loading true start untill data comes.
+      case 'task/fetchAllTask/pending':
         return { 
             ...state,
             loading: true
           }
+
+      // loading true start untill data comes.
+      case 'task/fetchAllTask/rejected':
+        return { 
+            ...state,
+            loading: false,
+          }
+
+    // loading end after getting data.
+      case 'task/fetchAllTask/fulfilled':
+        return { 
+            ...state,
+            loading: false,
+            task: action.payload // data coming from fetchAllTask function.
+          }
+          
       case 'CHANGE_TASK':
         return { 
             ...state,
