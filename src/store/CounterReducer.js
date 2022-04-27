@@ -1,5 +1,5 @@
 const initial = {
-    value: 0,
+    value: 10,
   };
 
 function counterReducer(state = initial, action) {
