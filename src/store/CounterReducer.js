@@ -15,6 +15,7 @@ function counterReducer(state = initial, action) {
   
       case 'DECREMENT_ONE':
         return {...state, value: state.value - 1 }
+        
       case 'INCREMENT':
         return {...state,
            value: state.value + action.value

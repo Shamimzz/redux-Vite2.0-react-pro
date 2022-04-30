@@ -1,6 +1,7 @@
 import { useSelector } from "react-redux";
 import "./App.css";
 import Counter from "./component/Counter";
+import Products from "./component/Products";
 import Tasklist from "./component/Tasklist";
 
 function App() {
@@ -12,6 +13,8 @@ function App() {
       <Counter></Counter>
       <br />
       <Tasklist></Tasklist>
+      <br />
+      <Products></Products>
     </div>
   );
 }

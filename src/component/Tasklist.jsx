@@ -28,7 +28,7 @@ const Tasklist = () => {
     dispatch(fetchAllTask());
   }, []);
 
-  console.log("Loading", loading);
+  // console.log("Loading", loading);
 
   return (
     <div>
